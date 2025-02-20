@@ -40,3 +40,7 @@ func _on_language_item_selected(index: int) -> void:
 		TranslationServer.set_locale("en")
 	if index == 0:
 		TranslationServer.set_locale("fr")
+
+
+func _on_leave_scene_to_main_button_up() -> void:
+	get_tree().change_scene_to_file("res://scenes/menu_principale/principale.tscn")

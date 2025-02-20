@@ -1,0 +1,143 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8235vv5ywgou"]
+
+[ext_resource type="PackedScene" uid="uid://docw8jtxtht2e" path="res://scenes/UI/esc_menu.tscn" id="1_32x25"]
+[ext_resource type="Script" uid="uid://c7npoh1lo0h11" path="res://scenes/menu_principale/principale.gd" id="1_nolyi"]
+[ext_resource type="Texture2D" uid="uid://bgeki5cxvttlp" path="res://resources/Logo_quantum_ets.svg" id="1_w6vnv"]
+[ext_resource type="Script" uid="uid://cl8ws125lxekl" path="res://scenes/menu_principale/popup_menu.gd" id="2_ix0ak"]
+
+[sub_resource type="SystemFont" id="SystemFont_32x25"]
+font_names = PackedStringArray("Arial")
+font_italic = true
+
+[node name="menu_principale" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nolyi")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bloch_sphere" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Bloch sphere scene"
+
+[node name="multi_qubits" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Multi qubits editor scene"
+
+[node name="Quantum_ets_logo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="Quantum_ets_logo"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -353.0
+offset_top = 4.0
+offset_right = -5.0
+offset_bottom = 315.0
+grow_horizontal = 0
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(348, 0)
+texture = ExtResource("1_w6vnv")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Quantum_ets_logo"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -181.0
+offset_top = 10.0
+offset_right = -79.0
+offset_bottom = 33.0
+grow_horizontal = 0
+theme_override_fonts/normal_font = SubResource("SystemFont_32x25")
+text = "QuantumETS"
+scroll_active = false
+
+[node name="main menu text" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 43.0
+offset_bottom = 110.0
+grow_horizontal = 2
+theme_override_colors/table_border = Color(0.665604, 1.96133e-06, 4.33177e-07, 1)
+theme_override_colors/table_even_row_bg = Color(0.999797, 0.260377, 0.201168, 1)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.489072, 0.259366, 0.270182, 1)
+theme_override_colors/font_shadow_color = Color(0.533037, 0.533037, 0.533037, 1)
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 8
+theme_override_font_sizes/normal_font_size = 33
+theme_override_font_sizes/bold_font_size = 33
+bbcode_enabled = true
+text = "[b]QuantumCircuit Node Demos Scenes Explorer [/b]"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="popup_menu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -74.0
+offset_top = -88.0
+offset_right = 74.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Language settings"
+script = ExtResource("2_ix0ak")
+
+[node name="esc_menu" parent="." instance=ExtResource("1_32x25")]
+
+[node name="Leave scene to main" parent="esc_menu/gui_holder/AspectRatioContainer/VBoxContainer" index="1"]
+visible = false
+
+[node name="axes_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/VBoxContainer" index="3"]
+visible = false
+
+[node name="labels_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/VBoxContainer" index="4"]
+visible = false
+
+[node name="sphere_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/VBoxContainer" index="5"]
+visible = false
+
+[node name="flag_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/VBoxContainer" index="6"]
+visible = false
+
+[node name="global_phase_vec_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/VBoxContainer" index="7"]
+visible = false
+
+[connection signal="pressed" from="VBoxContainer/bloch_sphere" to="." method="_on_bloch_sphere_pressed"]
+[connection signal="pressed" from="VBoxContainer/multi_qubits" to="." method="_on_multi_qubits_pressed"]
+[connection signal="button_up" from="popup_menu" to="popup_menu" method="_on_popup_menu_button_up"]
+
+[editable path="esc_menu"]

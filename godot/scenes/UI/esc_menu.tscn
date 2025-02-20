@@ -124,6 +124,7 @@ button_pressed = true
 text = "Show Global Phase Vector"
 
 [connection signal="button_up" from="gui_holder/AspectRatioContainer/VBoxContainer/Back to scene" to="." method="_on_back_to_scene_button_up"]
+[connection signal="button_up" from="gui_holder/AspectRatioContainer/VBoxContainer/Leave scene to main" to="." method="_on_leave_scene_to_main_button_up"]
 [connection signal="item_selected" from="gui_holder/AspectRatioContainer/VBoxContainer/HBoxContainer/Language" to="." method="_on_language_item_selected"]
 [connection signal="toggled" from="gui_holder/AspectRatioContainer/VBoxContainer/axes_CheckBox" to="." method="_on_axes_check_box_toggled"]
 [connection signal="toggled" from="gui_holder/AspectRatioContainer/VBoxContainer/labels_CheckBox" to="." method="_on_labels_check_box_toggled"]
