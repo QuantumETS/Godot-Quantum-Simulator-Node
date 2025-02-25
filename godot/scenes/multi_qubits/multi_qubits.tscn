@@ -1,3 +1,143 @@
-[gd_scene format=3 uid="uid://dlq6quu7guncc"]
+[gd_scene load_steps=10 format=3 uid="uid://dlq6quu7guncc"]
+
+[ext_resource type="Script" uid="uid://vci0hbuxa7k3" path="res://scenes/multi_qubits/drag_select.gd" id="1_r4nga"]
+[ext_resource type="PackedScene" uid="uid://docw8jtxtht2e" path="res://scenes/UI/esc_menu.tscn" id="2_utrw2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4nga"]
+bg_color = Color(0.696103, 0.449267, 0, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_utrw2"]
+bg_color = Color(1, 0.25098, 0.647059, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_utrw2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eltfn"]
+bg_color = Color(0, 0.283793, 0.420684, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydall"]
+bg_color = Color(0.18359, 0.18359, 0.18359, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(1, 0.443137, 0.698039, 1)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yquoj"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(1, 0.443137, 0.698039, 1)
+shadow_size = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3j457"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(1, 0.443137, 0.698039, 1)
+shadow_size = 1
 
 [node name="multi_qubits" type="Node"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tools" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r4nga")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Tools"]
+layout_mode = 0
+offset_right = 114.0
+offset_bottom = 122.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/Tools/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r4nga")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Tools/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_utrw2")
+
+[node name="Label" type="Label" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.408329, 0.408329, 0.408329, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_utrw2")
+text = "Mouse Tools"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_utrw2")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_right = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Drag_select" type="Button" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_eltfn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ydall")
+theme_override_styles/normal = SubResource("StyleBoxFlat_yquoj")
+text = "Drag Select"
+
+[node name="Drag" type="Button" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxFlat_eltfn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ydall")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3j457")
+text = "Drag"
+
+[node name="HSeparator2" type="HSeparator" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_utrw2")
+
+[node name="esc_menu" parent="." instance=ExtResource("2_utrw2")]
+
+[node name="axes_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer" index="3"]
+visible = false
+
+[node name="labels_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer" index="4"]
+visible = false
+
+[node name="sphere_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer" index="5"]
+visible = false
+
+[node name="flag_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer" index="6"]
+visible = false
+
+[node name="global_phase_vec_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer" index="7"]
+visible = false
+
+[editable path="esc_menu"]
