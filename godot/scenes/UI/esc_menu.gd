@@ -44,3 +44,8 @@ func _on_language_item_selected(index: int) -> void:
 
 func _on_leave_scene_to_main_button_up() -> void:
 	get_tree().change_scene_to_file("res://scenes/menu_principale/principale.tscn")
+
+
+func _on_color_rect_gui_input(event: InputEvent) -> void:
+	if event.is_pressed():
+		$gui_holder.visible = false
