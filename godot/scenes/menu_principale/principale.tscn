@@ -94,10 +94,10 @@ theme_override_colors/font_shadow_color = Color(0.533037, 0.533037, 0.533037, 1)
 theme_override_constants/outline_size = 1
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 8
-theme_override_font_sizes/normal_font_size = 33
+theme_override_font_sizes/normal_font_size = 38
 theme_override_font_sizes/bold_font_size = 33
 bbcode_enabled = true
-text = "[b]QuantumCircuit Node Demos Scenes Explorer [/b]"
+text = "QuantumCircuit Node Demos Scenes Explorer"
 scroll_active = false
 horizontal_alignment = 1
 
@@ -118,22 +118,22 @@ script = ExtResource("2_ix0ak")
 
 [node name="esc_menu" parent="." instance=ExtResource("1_32x25")]
 
-[node name="Leave scene to main" parent="esc_menu/gui_holder/AspectRatioContainer/VBoxContainer" index="1"]
+[node name="Leave scene to main" parent="esc_menu/gui_holder/AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer" index="1"]
 visible = false
 
-[node name="axes_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/VBoxContainer" index="3"]
+[node name="axes_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer" index="3"]
 visible = false
 
-[node name="labels_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/VBoxContainer" index="4"]
+[node name="labels_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer" index="4"]
 visible = false
 
-[node name="sphere_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/VBoxContainer" index="5"]
+[node name="sphere_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer" index="5"]
 visible = false
 
-[node name="flag_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/VBoxContainer" index="6"]
+[node name="flag_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer" index="6"]
 visible = false
 
-[node name="global_phase_vec_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/VBoxContainer" index="7"]
+[node name="global_phase_vec_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer" index="7"]
 visible = false
 
 [connection signal="pressed" from="VBoxContainer/bloch_sphere" to="." method="_on_bloch_sphere_pressed"]
