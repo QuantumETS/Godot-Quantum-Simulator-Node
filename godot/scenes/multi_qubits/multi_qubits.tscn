@@ -1,7 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlq6quu7guncc"]
+[gd_scene load_steps=11 format=3 uid="uid://dlq6quu7guncc"]
 
 [ext_resource type="Script" uid="uid://vci0hbuxa7k3" path="res://scenes/multi_qubits/drag_select.gd" id="1_r4nga"]
 [ext_resource type="PackedScene" uid="uid://docw8jtxtht2e" path="res://scenes/UI/esc_menu.tscn" id="2_utrw2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2co4"]
+bg_color = Color(0.619608, 0.505882, 0, 0.278431)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4nga"]
 bg_color = Color(0.696103, 0.449267, 0, 1)
@@ -56,36 +59,71 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Tools" type="Control" parent="Control"]
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 238.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y2co4")
+
+[node name="gates menu" type="Control" parent="Control/PanelContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/PanelContainer/gates menu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 104.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "init_circuit
+x
+y
+z
+h
+s
+t
+rx
+ry
+rz
+identity
+swap
+cnot
+custom_controlled (cnot could be merged into this)
+add_measurement
+plan : create a scene that allow to set the 2d texture/color, 3d mesh, the text, circle/slider/lineedit to set rxyz gates + the quantum gate operation to execute"
+
+[node name="Tools" type="Control" parent="Control/PanelContainer"]
+layout_mode = 2
 script = ExtResource("1_r4nga")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/Tools"]
-layout_mode = 0
-offset_right = 114.0
-offset_bottom = 122.0
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/Tools"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 103.0
+grow_horizontal = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/Tools/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Control/PanelContainer/Tools/MarginContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_r4nga")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Tools/MarginContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/Tools/MarginContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="HSeparator3" type="HSeparator" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxFlat_utrw2")
 
-[node name="Label" type="Label" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0.408329, 0.408329, 0.408329, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -93,35 +131,68 @@ theme_override_fonts/font = SubResource("SystemFont_utrw2")
 text = "Mouse Tools"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxFlat_utrw2")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_right = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Drag_select" type="Button" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Drag_select" type="Button" parent="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_eltfn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ydall")
 theme_override_styles/normal = SubResource("StyleBoxFlat_yquoj")
 text = "Drag Select"
 
-[node name="Drag" type="Button" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="Drag" type="Button" parent="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_eltfn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ydall")
 theme_override_styles/normal = SubResource("StyleBoxFlat_3j457")
 text = "Drag"
 
-[node name="HSeparator2" type="HSeparator" parent="Control/Tools/MarginContainer/PanelContainer/VBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxFlat_utrw2")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+text = "Measure circuit"
+
+[node name="MenuBar" type="MenuBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PopupMenu2" type="PopupMenu" parent="Control/MenuBar"]
+auto_translate_mode = 1
+item_count = 1
+item_0/text = "test"
+item_0/checked = true
+item_0/id = 0
+
+[node name="PopupMenu" type="PopupMenu" parent="Control/MenuBar"]
+item_count = 1
+item_0/text = "test2"
+item_0/id = 0
 
 [node name="esc_menu" parent="." instance=ExtResource("2_utrw2")]
 
@@ -139,5 +210,8 @@ visible = false
 
 [node name="global_phase_vec_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer" index="7"]
 visible = false
+
+[connection signal="pressed" from="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Drag_select" to="Control/PanelContainer/Tools" method="_on_drag_select_pressed"]
+[connection signal="pressed" from="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Drag" to="Control/PanelContainer/Tools" method="_on_drag_pressed"]
 
 [editable path="esc_menu"]
