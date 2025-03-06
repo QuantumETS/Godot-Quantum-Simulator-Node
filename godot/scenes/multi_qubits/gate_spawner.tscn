@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://chpqi36sahubm"]
+
+[ext_resource type="Script" uid="uid://cmeonr0dec57m" path="res://scenes/multi_qubits/gate_spawner.gd" id="1_fdy6o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdy6o"]
+bg_color = Color(0.611012, 0, 0.0536503, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.670433, 0.366995, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="general_gate" type="Panel"]
+custom_minimum_size = Vector2(75, 75)
+anchors_preset = -1
+anchor_right = 0.0868056
+anchor_bottom = 0.154321
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_fdy6o")
+script = ExtResource("1_fdy6o")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 35
+text = "X"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

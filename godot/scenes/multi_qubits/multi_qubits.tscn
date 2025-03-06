@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlq6quu7guncc"]
+[gd_scene load_steps=12 format=3 uid="uid://dlq6quu7guncc"]
 
+[ext_resource type="PackedScene" uid="uid://chpqi36sahubm" path="res://scenes/multi_qubits/gate_spawner.tscn" id="1_3j457"]
 [ext_resource type="Script" uid="uid://vci0hbuxa7k3" path="res://scenes/multi_qubits/drag_select.gd" id="1_r4nga"]
 [ext_resource type="PackedScene" uid="uid://docw8jtxtht2e" path="res://scenes/UI/esc_menu.tscn" id="2_utrw2"]
 
@@ -71,6 +72,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_y2co4")
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/PanelContainer/gates menu"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -94,6 +96,54 @@ cnot
 custom_controlled (cnot could be merged into this)
 add_measurement
 plan : create a scene that allow to set the 2d texture/color, 3d mesh, the text, circle/slider/lineedit to set rxyz gates + the quantum gate operation to execute"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/gates menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.154321
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="FlowContainer" type="FlowContainer" parent="Control/PanelContainer/gates menu/MarginContainer"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="general_gate" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_stretch_ratio = 2.86
+
+[node name="general_gate2" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_stretch_ratio = 2.86
+
+[node name="general_gate3" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_stretch_ratio = 2.86
+
+[node name="general_gate4" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_stretch_ratio = 2.86
+
+[node name="general_gate5" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_stretch_ratio = 2.86
+
+[node name="general_gate6" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_stretch_ratio = 2.86
 
 [node name="Tools" type="Control" parent="Control/PanelContainer"]
 layout_mode = 2
@@ -171,28 +221,6 @@ offset_left = -8.0
 offset_bottom = 8.0
 grow_horizontal = 0
 text = "Measure circuit"
-
-[node name="MenuBar" type="MenuBar" parent="Control"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -56.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="PopupMenu2" type="PopupMenu" parent="Control/MenuBar"]
-auto_translate_mode = 1
-item_count = 1
-item_0/text = "test"
-item_0/checked = true
-item_0/id = 0
-
-[node name="PopupMenu" type="PopupMenu" parent="Control/MenuBar"]
-item_count = 1
-item_0/text = "test2"
-item_0/id = 0
 
 [node name="esc_menu" parent="." instance=ExtResource("2_utrw2")]
 

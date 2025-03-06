@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://5jgpwsd1wuio"]
+
+[ext_resource type="Script" uid="uid://1nk6kfr4vfmn" path="res://scenes/multi_qubits/gate.gd" id="1_k7bs5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7bs5"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="gate" type="Panel"]
+custom_minimum_size = Vector2(75, 75)
+anchors_preset = -1
+anchor_right = 0.087
+anchor_bottom = 0.154
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_k7bs5")
+script = ExtResource("1_k7bs5")
+panel_color = null
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "x"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0

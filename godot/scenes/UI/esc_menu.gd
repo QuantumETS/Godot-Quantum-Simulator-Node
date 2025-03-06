@@ -47,5 +47,7 @@ func _on_leave_scene_to_main_button_up() -> void:
 
 
 func _on_color_rect_gui_input(event: InputEvent) -> void:
+	if event != null:
+		pass
 	if event.is_pressed():
 		$gui_holder.visible = false
