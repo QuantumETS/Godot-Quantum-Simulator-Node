@@ -3,20 +3,24 @@
 [ext_resource type="Script" uid="uid://1nk6kfr4vfmn" path="res://scenes/multi_qubits/gate.gd" id="1_k7bs5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7bs5"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0, 0, 0, 1)
 
 [node name="gate" type="Panel"]
+z_index = 10
 custom_minimum_size = Vector2(75, 75)
 anchors_preset = -1
 anchor_right = 0.087
 anchor_bottom = 0.154
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 6
 theme_override_styles/panel = SubResource("StyleBoxFlat_k7bs5")
 script = ExtResource("1_k7bs5")
-panel_color = null
+metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+z_index = 10
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +29,14 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "x"
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "X"
+scroll_active = false
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 128
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

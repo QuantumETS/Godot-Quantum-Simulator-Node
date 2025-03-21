@@ -3,4 +3,4 @@ extends Panel
 
 
 func _ready() -> void:
-	pass
+	get_theme_stylebox("panel").set_bg_color(panel_color)
