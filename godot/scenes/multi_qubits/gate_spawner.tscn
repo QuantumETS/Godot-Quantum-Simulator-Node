@@ -22,6 +22,7 @@ anchor_bottom = 0.154321
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fdy6o")
 script = ExtResource("1_fdy6o")
 metadata/_edit_use_anchors_ = true
@@ -33,10 +34,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 35
 text = "X"
 scroll_active = false
+shortcut_keys_enabled = false
 horizontal_alignment = 1
 vertical_alignment = 1
+justification_flags = 128
+meta_underlined = false
+hint_underlined = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

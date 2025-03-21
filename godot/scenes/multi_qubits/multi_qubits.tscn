@@ -115,11 +115,6 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="general_gate" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
-layout_mode = 2
-size_flags_horizontal = 1
-size_flags_stretch_ratio = 2.86
-
 [node name="general_gate2" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
 layout_mode = 2
 size_flags_horizontal = 1
@@ -145,8 +140,15 @@ layout_mode = 2
 size_flags_horizontal = 1
 size_flags_stretch_ratio = 2.86
 
+[node name="general_gate" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_stretch_ratio = 2.86
+
 [node name="Tools" type="Control" parent="Control/PanelContainer"]
 layout_mode = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_r4nga")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer/Tools"]
@@ -196,6 +198,7 @@ layout_mode = 2
 
 [node name="Drag_select" type="Button" parent="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_eltfn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ydall")
 theme_override_styles/normal = SubResource("StyleBoxFlat_yquoj")
@@ -203,6 +206,7 @@ text = "Drag Select"
 
 [node name="Drag" type="Button" parent="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxFlat_eltfn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ydall")
 theme_override_styles/normal = SubResource("StyleBoxFlat_3j457")
