@@ -33,6 +33,7 @@ func _on_gui_input(event: InputEvent) -> void:
 		var wire = find_closest_wire(event.global_position)
 		if wire:
 			remove_child(moving_gate)
+			moving_gate.change_z_index()
 			wire.attach_gate(moving_gate, event.global_position)
 		else:
 			moving_gate.queue_free()
