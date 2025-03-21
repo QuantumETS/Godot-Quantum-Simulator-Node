@@ -6,6 +6,14 @@ extends Panel
 
 @onready var gate = preload("res://scenes/multi_qubits/gate.tscn")
 
+func find_closest_wire(pos: Vector2) -> Node:
+	var closest = null
+	for wire in get_tree().get_nodes_in_group("wires"):
+		var wire_pos = wire.global_position
+		if abs(pos.y - wire_pos.y) < closest:
+			closest = wire
+	return closest
+
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_mask == 1:
 		var temp = gate.instantiate()
@@ -19,5 +27,10 @@ func _on_gui_input(event: InputEvent) -> void:
 		var moving_gate = get_child(1)
 		moving_gate.global_position = event.global_position-moving_gate.get_rect().size/2
 	if event is InputEventMouseButton and event.button_mask == 0:
-		get_child(1).queue_free()
-	
+		var moving_gate = get_child(1)
+		var wire = find_closest_wire(moving_gate.global_position)
+		if wire:
+			remove_child(moving_gate)
+			wire.attach_gate(moving_gate, moving_gate.global_position)
+		else:
+			moving_gate.queue_free()

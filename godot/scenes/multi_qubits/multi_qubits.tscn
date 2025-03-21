@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dlq6quu7guncc"]
+[gd_scene load_steps=15 format=3 uid="uid://dlq6quu7guncc"]
 
 [ext_resource type="PackedScene" uid="uid://chpqi36sahubm" path="res://scenes/multi_qubits/gate_spawner.tscn" id="1_3j457"]
 [ext_resource type="Script" uid="uid://vci0hbuxa7k3" path="res://scenes/multi_qubits/drag_select.gd" id="1_r4nga"]
+[ext_resource type="Script" uid="uid://eucnkmcvjnqn" path="res://scenes/multi_qubits/multi_qubits.gd" id="1_yquoj"]
 [ext_resource type="PackedScene" uid="uid://docw8jtxtht2e" path="res://scenes/UI/esc_menu.tscn" id="2_utrw2"]
+[ext_resource type="PackedScene" uid="uid://bx5rd1qssaknh" path="res://scenes/multi_qubits/wire.tscn" id="3_eltfn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2co4"]
 bg_color = Color(0.619608, 0.505882, 0, 0.278431)
@@ -50,7 +52,11 @@ corner_radius_bottom_left = 2
 shadow_color = Color(1, 0.443137, 0.698039, 1)
 shadow_size = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkx6g"]
+bg_color = Color(1, 1, 1, 0)
+
 [node name="multi_qubits" type="Node"]
+script = ExtResource("1_yquoj")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -216,13 +222,60 @@ text = "Drag"
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxFlat_utrw2")
 
+[node name="wires" type="PanelContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mkx6g")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/wires"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 240
+theme_override_constants/margin_top = 40
+
+[node name="VBox_wireholder" type="VBoxContainer" parent="Control/wires/MarginContainer"]
+custom_minimum_size = Vector2(0, 4.69)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 80
+
+[node name="wire" parent="Control/wires/MarginContainer/VBox_wireholder" instance=ExtResource("3_eltfn")]
+layout_mode = 2
+
+[node name="wire2" parent="Control/wires/MarginContainer/VBox_wireholder" instance=ExtResource("3_eltfn")]
+layout_mode = 2
+
+[node name="wire3" parent="Control/wires/MarginContainer/VBox_wireholder" instance=ExtResource("3_eltfn")]
+layout_mode = 2
+
+[node name="wire4" parent="Control/wires/MarginContainer/VBox_wireholder" instance=ExtResource("3_eltfn")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/wires/MarginContainer"]
+layout_mode = 2
+
+[node name="add_wire" type="Button" parent="Control/wires/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "add wire"
+
+[node name="remove_wire" type="Button" parent="Control/wires/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "remove wire"
+
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -8.0
-offset_bottom = 8.0
+offset_left = -128.0
+offset_bottom = 31.0
 grow_horizontal = 0
 text = "Measure circuit"
 
@@ -245,5 +298,7 @@ visible = false
 
 [connection signal="pressed" from="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Drag_select" to="Control/PanelContainer/Tools" method="_on_drag_select_pressed"]
 [connection signal="pressed" from="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Drag" to="Control/PanelContainer/Tools" method="_on_drag_pressed"]
+[connection signal="pressed" from="Control/wires/MarginContainer/HBoxContainer/add_wire" to="." method="_on_add_wire_pressed"]
+[connection signal="pressed" from="Control/wires/MarginContainer/HBoxContainer/remove_wire" to="." method="_on_remove_wire_pressed"]
 
 [editable path="esc_menu"]
