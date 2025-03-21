@@ -8,9 +8,11 @@ extends Panel
 
 func find_closest_wire(pos: Vector2) -> Node:
 	var closest = null
+	var current_lowest_dist = 99999
 	for wire in get_tree().get_nodes_in_group("wires"):
-		var wire_pos = wire.global_position
-		if abs(pos.y - wire_pos.y) < closest:
+		var current_dist = abs(pos.y - wire.global_position.y)
+		if current_dist < current_lowest_dist:
+			current_lowest_dist = current_dist
 			closest = wire
 	return closest
 
@@ -28,9 +30,9 @@ func _on_gui_input(event: InputEvent) -> void:
 		moving_gate.global_position = event.global_position-moving_gate.get_rect().size/2
 	if event is InputEventMouseButton and event.button_mask == 0:
 		var moving_gate = get_child(1)
-		var wire = find_closest_wire(moving_gate.global_position)
+		var wire = find_closest_wire(event.global_position)
 		if wire:
 			remove_child(moving_gate)
-			wire.attach_gate(moving_gate, moving_gate.global_position)
+			wire.attach_gate(moving_gate, event.global_position)
 		else:
 			moving_gate.queue_free()

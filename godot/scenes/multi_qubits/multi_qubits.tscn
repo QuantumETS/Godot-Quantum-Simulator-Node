@@ -247,15 +247,6 @@ theme_override_constants/separation = 80
 [node name="wire" parent="Control/wires/MarginContainer/VBox_wireholder" instance=ExtResource("3_eltfn")]
 layout_mode = 2
 
-[node name="wire2" parent="Control/wires/MarginContainer/VBox_wireholder" instance=ExtResource("3_eltfn")]
-layout_mode = 2
-
-[node name="wire3" parent="Control/wires/MarginContainer/VBox_wireholder" instance=ExtResource("3_eltfn")]
-layout_mode = 2
-
-[node name="wire4" parent="Control/wires/MarginContainer/VBox_wireholder" instance=ExtResource("3_eltfn")]
-layout_mode = 2
-
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/wires/MarginContainer"]
 layout_mode = 2
 
