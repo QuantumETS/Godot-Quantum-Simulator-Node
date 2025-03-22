@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dlq6quu7guncc"]
+[gd_scene load_steps=17 format=3 uid="uid://dlq6quu7guncc"]
 
 [ext_resource type="PackedScene" uid="uid://chpqi36sahubm" path="res://scenes/multi_qubits/gate_spawner.tscn" id="1_3j457"]
 [ext_resource type="Script" uid="uid://vci0hbuxa7k3" path="res://scenes/multi_qubits/drag_select.gd" id="1_r4nga"]
@@ -8,6 +8,30 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2co4"]
 bg_color = Color(0.619608, 0.505882, 0, 0.278431)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16vk6"]
+bg_color = Color(0.758633, 0, 0.203114, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.670433, 0.366995, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ung7"]
+bg_color = Color(0.0881852, 0.486435, 9.62615e-08, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.670433, 0.366995, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4nga"]
 bg_color = Color(0.696103, 0.449267, 0, 1)
@@ -125,31 +149,39 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_stretch_ratio = 2.86
+theme_override_styles/panel = SubResource("StyleBoxFlat_16vk6")
+gate_name = "X"
 
 [node name="general_gate3" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_stretch_ratio = 2.86
+gate_name = "Y"
 
 [node name="general_gate4" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_stretch_ratio = 2.86
+gate_name = "Z"
 
 [node name="general_gate5" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_stretch_ratio = 2.86
+gate_name = "H"
 
 [node name="general_gate6" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_stretch_ratio = 2.86
+gate_name = "S"
 
 [node name="general_gate" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_stretch_ratio = 2.86
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ung7")
+gate_name = "T"
 
 [node name="Tools" type="Control" parent="Control/PanelContainer"]
 layout_mode = 2
