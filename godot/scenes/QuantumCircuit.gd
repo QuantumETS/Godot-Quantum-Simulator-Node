@@ -33,11 +33,25 @@ func update_1_qubit_circuit(rx,ry,rz,gate_order):
 	var im_2 = st["bases"][1]["im"]
 	update_statevector_text(real_1,im_1,real_2,im_2)
 	$bloch_sphere.set_bloch_sphere_to_statevector(real_1,im_1,real_2,im_2)
-	# todo :
-	# créer un menu pour cacher différentes élément de la scene + retour au menu principale
-
 
 func _on_bloch_sphere_theta_phi_changed(theta: float, phi: float) -> void:
 	if phi < 0.0: # this is a quick hack, for some reason phi can reach below 0 in specific config ??
 		phi += 2*PI
 	$"../Menu/statevector_txt/phi_theta_txt".text = "ϕ = %.2f ; θ = %.2f" % [phi, theta]
+
+func set_measure_circuit_and_set_bloch(circuit):
+	var number_of_qubits = circuit.size()
+	init_circuit(number_of_qubits,number_of_qubits)
+	var index = 0
+	for wire in circuit:
+		for gate in wire:
+			call(gate.to_lower(),index)
+		index += 1
+	var st = run_qasm_str_statevector(export_to_openqasm_string(),1)
+	var real_1 = st["bases"][0]["re"]
+	var im_1 = st["bases"][0]["im"]
+	var real_2 = st["bases"][1]["re"]
+	var im_2 = st["bases"][1]["im"]
+	print(st)
+	$"../Control/bloch_views/HBoxContainer/SubViewportContainer/SubViewport/bloch_sphere".set_bloch_sphere_to_statevector(real_1,im_1,real_2,im_2)
+	$"../Control/bloch_views/HBoxContainer/SubViewportContainer2/SubViewport/bloch_sphere".set_bloch_sphere_to_statevector(real_1,im_1,real_2,im_2)
