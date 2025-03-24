@@ -30,3 +30,4 @@ offset_top = -37.5
 offset_right = 75.0
 offset_bottom = 37.5
 grow_vertical = 2
+theme_override_constants/separation = 20

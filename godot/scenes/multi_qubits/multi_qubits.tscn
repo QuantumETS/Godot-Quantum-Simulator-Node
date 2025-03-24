@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://dlq6quu7guncc"]
+[gd_scene load_steps=25 format=3 uid="uid://dlq6quu7guncc"]
 
 [ext_resource type="PackedScene" uid="uid://chpqi36sahubm" path="res://scenes/multi_qubits/gate_spawner.tscn" id="1_3j457"]
 [ext_resource type="Script" uid="uid://vci0hbuxa7k3" path="res://scenes/multi_qubits/drag_select.gd" id="1_r4nga"]
 [ext_resource type="Script" uid="uid://eucnkmcvjnqn" path="res://scenes/multi_qubits/multi_qubits.gd" id="1_yquoj"]
 [ext_resource type="PackedScene" uid="uid://docw8jtxtht2e" path="res://scenes/UI/esc_menu.tscn" id="2_utrw2"]
 [ext_resource type="PackedScene" uid="uid://bx5rd1qssaknh" path="res://scenes/multi_qubits/wire.tscn" id="3_eltfn"]
+[ext_resource type="Script" uid="uid://djabpejumqkyu" path="res://scenes/QuantumCircuit.gd" id="6_y2co4"]
+[ext_resource type="PackedScene" uid="uid://csc8ku5aalgf0" path="res://scenes/bloch_scenes/quantum_objects/bloch_sphere.tscn" id="7_mkx6g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y2co4"]
 bg_color = Color(0.619608, 0.505882, 0, 0.278431)
@@ -15,23 +17,77 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(1, 0.670433, 0.366995, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ung7"]
-bg_color = Color(0.0881852, 0.486435, 9.62615e-08, 1)
+bg_color = Color(2.04556e-06, 0.655926, 0.14806, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(1, 0.670433, 0.366995, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3sh01"]
+bg_color = Color(0.140485, 0, 0.874651, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jj15e"]
+bg_color = Color(0.87777, 0.438635, 5.77569e-07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upi0c"]
+bg_color = Color(0.140485, 0, 0.874651, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cl8cb"]
+bg_color = Color(0.87777, 0.438635, 5.77569e-07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r4nga"]
 bg_color = Color(0.696103, 0.449267, 0, 1)
@@ -78,6 +134,12 @@ shadow_size = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkx6g"]
 bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="Environment" id="Environment_y2co4"]
+background_mode = 1
+
+[sub_resource type="World3D" id="World3D_mkx6g"]
+environment = SubResource("Environment_y2co4")
 
 [node name="multi_qubits" type="Node"]
 script = ExtResource("1_yquoj")
@@ -156,31 +218,35 @@ gate_name = "X"
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_stretch_ratio = 2.86
+theme_override_styles/panel = SubResource("StyleBoxFlat_5ung7")
 gate_name = "Y"
 
 [node name="general_gate4" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_stretch_ratio = 2.86
+theme_override_styles/panel = SubResource("StyleBoxFlat_3sh01")
 gate_name = "Z"
 
 [node name="general_gate5" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_stretch_ratio = 2.86
+theme_override_styles/panel = SubResource("StyleBoxFlat_jj15e")
 gate_name = "H"
 
 [node name="general_gate6" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_stretch_ratio = 2.86
+theme_override_styles/panel = SubResource("StyleBoxFlat_upi0c")
 gate_name = "S"
 
 [node name="general_gate" parent="Control/PanelContainer/gates menu/MarginContainer/FlowContainer" instance=ExtResource("1_3j457")]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_stretch_ratio = 2.86
-theme_override_styles/panel = SubResource("StyleBoxFlat_5ung7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_cl8cb")
 gate_name = "T"
 
 [node name="Tools" type="Control" parent="Control/PanelContainer"]
@@ -274,9 +340,12 @@ theme_override_constants/margin_top = 40
 custom_minimum_size = Vector2(0, 4.69)
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/separation = 80
+theme_override_constants/separation = 100
 
 [node name="wire" parent="Control/wires/MarginContainer/VBox_wireholder" instance=ExtResource("3_eltfn")]
+layout_mode = 2
+
+[node name="wire2" parent="Control/wires/MarginContainer/VBox_wireholder" instance=ExtResource("3_eltfn")]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/wires/MarginContainer"]
@@ -292,6 +361,61 @@ layout_mode = 2
 size_flags_vertical = 8
 text = "remove wire"
 
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -256.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 240
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="Control/MarginContainer/HBoxContainer/SubViewportContainer"]
+world_3d = SubResource("World3D_mkx6g")
+handle_input_locally = false
+gui_disable_input = true
+gui_embed_subwindows = true
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+
+[node name="bloch_sphere" parent="Control/MarginContainer/HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("7_mkx6g")]
+show_sphere = false
+show_flag = false
+
+[node name="Camera3D" type="Camera3D" parent="Control/MarginContainer/HBoxContainer/SubViewportContainer/SubViewport/bloch_sphere"]
+transform = Transform3D(-0.656059, -0.53366, 0.53366, 0, 0.707107, 0.707107, -0.75471, 0.463904, -0.463904, 0.7, 0.94, -0.6)
+fov = 51.7523
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="Control/MarginContainer/HBoxContainer/SubViewportContainer2"]
+world_3d = SubResource("World3D_mkx6g")
+handle_input_locally = false
+gui_disable_input = true
+gui_embed_subwindows = true
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+
+[node name="bloch_sphere" parent="Control/MarginContainer/HBoxContainer/SubViewportContainer2/SubViewport" instance=ExtResource("7_mkx6g")]
+show_sphere = false
+show_flag = false
+
+[node name="Camera3D" type="Camera3D" parent="Control/MarginContainer/HBoxContainer/SubViewportContainer2/SubViewport/bloch_sphere"]
+transform = Transform3D(-0.656059, -0.53366, 0.53366, 0, 0.707107, 0.707107, -0.75471, 0.463904, -0.463904, 0.7, 0.94, -0.6)
+fov = 51.7523
+
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = 1
@@ -303,6 +427,9 @@ grow_horizontal = 0
 text = "Measure circuit"
 
 [node name="esc_menu" parent="." instance=ExtResource("2_utrw2")]
+
+[node name="gui_holder" parent="esc_menu" index="0"]
+z_index = 20
 
 [node name="axes_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer" index="3"]
 visible = false
@@ -318,6 +445,9 @@ visible = false
 
 [node name="global_phase_vec_CheckBox" parent="esc_menu/gui_holder/AspectRatioContainer/PanelContainer/MarginContainer/VBoxContainer" index="7"]
 visible = false
+
+[node name="QuantumCircuit" type="QuantumCircuit" parent="."]
+script = ExtResource("6_y2co4")
 
 [connection signal="pressed" from="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Drag_select" to="Control/PanelContainer/Tools" method="_on_drag_select_pressed"]
 [connection signal="pressed" from="Control/PanelContainer/Tools/MarginContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Drag" to="Control/PanelContainer/Tools" method="_on_drag_pressed"]
