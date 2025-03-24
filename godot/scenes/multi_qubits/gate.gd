@@ -6,7 +6,10 @@ func _ready() -> void:
 
 func change_z_index():
 	z_index = 1
-	$RichTextLabel.z_index = 1
+	$gate_name.z_index = 1
 
 func set_gate_type(type:String):
-	$RichTextLabel.text = type
+	$gate_name.text = type
+
+func get_gate_type():
+	return $gate_name.text

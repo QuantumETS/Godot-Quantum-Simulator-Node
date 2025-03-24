@@ -19,7 +19,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_k7bs5")
 script = ExtResource("1_k7bs5")
 metadata/_edit_use_anchors_ = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="gate_name" type="RichTextLabel" parent="."]
 z_index = 10
 layout_mode = 1
 anchors_preset = 15
